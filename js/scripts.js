@@ -50,10 +50,20 @@ $(document).ready(function () {
 			},
 			xaxis: {
 				title: {
-					text: "Age group (years)"
+					text: "Age (years)"
 				},
-				categories: [...Array(20).keys()].map(x => x * 5 + "-" + (x + 1) * 5)
+				type: 'numeric',
+				min: 0,
+				max: 100,
+				tickAmount: 10,
 			},
+			tooltip: {
+				x: {
+					formatter: function (val) {
+						return (val - 2.5).toFixed(0) + ' - ' + (val + 2.5).toFixed(0) + " years";
+					}
+				}
+			}
 		}
 
 		chart1 = new ApexCharts(document.querySelector("#chart-age-race"), options);
@@ -94,15 +104,15 @@ $(document).ready(function () {
 
 				series.push({
 					name: categories[i],
-					data: chart1data.filter(x => x.offense == f1type && x.race == i).map(x => x.count)
+					data: chart1data.filter(x => x.offense == f1type && x.race == i).map(x => [(+x.agegroup + .5) * 5, x.count])
 				});
 			}
 			return series;
 		}
 
 		return [{
-			name: 'incidents',
-			data: chart1data.filter(x => x.offense == f1type && x.race == f1race).map(x => x.count)
+			name: 'Incidents',
+			data: chart1data.filter(x => x.offense == f1type && x.race == f1race).map(x => [(+x.agegroup + .5) * 5, x.count])
 		}];
 	}
 });
