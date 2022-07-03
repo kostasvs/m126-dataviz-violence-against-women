@@ -68,7 +68,7 @@
 					</h6>
 					<div id="chart-age-race"></div>
 					<div id="filters-age-race" style="display: none">
-						<p>Offense category</p>
+						<p class="mb-1">Offense category</p>
 						<div class="btn-group" role="group" aria-label="Chart filter options - offense category">
 							<input type="radio" class="btn-check" id="f1type0" name="f1type" value="0"
 								autocomplete="off" checked />
@@ -87,7 +87,7 @@
 							<label class="btn btn-outline-primary" for="f1type3">Homicide</label>
 						</div>
 
-						<p>Victim race</p>
+						<p class="mt-3 mb-1">Victim race</p>
 						<div class="btn-group" role="group" aria-label="Chart filter options - victim race">
 							<input type="radio" class="btn-check" id="f1race0" name="f1race" value="0"
 								autocomplete="off" />
@@ -111,7 +111,145 @@
 
 							<input type="radio" class="btn-check" id="f1race5" name="f1race" value="5"
 								autocomplete="off" checked />
-							<label class="btn btn-outline-primary" for="f1race5">Aggregate</label>
+							<label class="btn btn-outline-primary" for="f1race5">Combined</label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row py-5 px-3">
+			<div class="col-12 col-lg-6 py-2">
+				<div class="scrollytellingBox">
+					<h1>How are crimes distributed across age and race?</h1>
+					<p class="lead py-2">
+						While assaults and homicides peak in the age range of 20 - 40 years,
+						sex offenses are highest in the age range of 10 - 25 years.
+					</p>
+					<p class="lead pb-2">
+						Assaults and homicides against Black or African American women seem
+						to be skewed towards a younger age range than other races.
+					</p>
+					<p class="lead pb-2">
+						Homicides show a wider age spread than other crimes.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="scrollytellingBox right delayed">
+					<h6 class="text-center">
+						Recorded intentional homicides, worldwide, by year and victim gender
+					</h6>
+					<div id="chart-homicides-year"></div>
+					<div id="filters-homicides-year" style="display: none">
+						<p class="mb-1">Victim gender</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - victim gender">
+							<input type="radio" class="btn-check" id="f2gender0" name="f2gender" value="Total"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f2gender0">Total</label>
+
+							<input type="radio" class="btn-check" id="f2gender1" name="f2gender" value="Male"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f2gender1">Male</label>
+
+							<input type="radio" class="btn-check" id="f2gender2" name="f2gender" value="Female"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f2gender2">Female</label>
+
+							<input type="radio" class="btn-check" id="f2gender3" name="f2gender" value="Unknown"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f2gender3">Unknown</label>
+
+							<input type="radio" class="btn-check" id="f2gender4" name="f2gender" value="Combined"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f2gender4">Combined</label>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="row py-5 px-3">
+			<div class="col-12 col-lg-6 py-2">
+				<div class="scrollytellingBox">
+					<h1>How are crimes distributed across age and race?</h1>
+					<p class="lead py-2">
+						While assaults and homicides peak in the age range of 20 - 40 years,
+						sex offenses are highest in the age range of 10 - 25 years.
+					</p>
+					<p class="lead pb-2">
+						Assaults and homicides against Black or African American women seem
+						to be skewed towards a younger age range than other races.
+					</p>
+					<p class="lead pb-2">
+						Homicides show a wider age spread than other crimes.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="scrollytellingBox right delayed">
+					<h6 class="text-center">
+						Recorded intentional homicides by country, year range, and gender
+					</h6>
+					<div id="chart-homicides-country"></div>
+
+					<div id="filters-homicides-country" style="display: none">
+						<div>
+							<label for="f3start" class="form-label mb-1" id="f3startlabel">Start year</label>
+							<div class="row">
+								<div class="col">
+									<input type="range" class="form-range" min="1990" max="2020" step="1" id="f3start"
+										name="f3start" value="1990">
+								</div>
+								<div class="col-auto user-select-none" id="f3starttext">1990</div>
+							</div>
+						</div>
+
+						<div id="f3endcontainer">
+							<label for="f3end" class="form-label mb-1 mt-2">End year</label>
+							<div class="row">
+								<div class="col">
+									<input type="range" class="form-range" min="1990" max="2020" step="1" id="f3end"
+										name="f3end" value="2020">
+								</div>
+								<div class="col-auto user-select-none" id="f3endtext">2020</div>
+							</div>
+						</div>
+
+						<p class="mt-3 mb-1">Victim gender</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - victim gender">
+							<input type="radio" class="btn-check" id="f3gender0" name="f3gender" value="Total"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f3gender0">Total</label>
+
+							<input type="radio" class="btn-check" id="f3gender1" name="f3gender" value="Male"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f3gender1">Male</label>
+
+							<input type="radio" class="btn-check" id="f3gender2" name="f3gender" value="Female"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f3gender2">Female</label>
+
+							<input type="radio" class="btn-check" id="f3gender3" name="f3gender" value="Unknown"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f3gender3">Unknown</label>
+						</div>
+
+						<p class="mt-3 mb-1">Measure</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - measure">
+							<input type="radio" class="btn-check" id="f3measure0" name="f3measure" value="N"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f3measure0">Count</label>
+
+							<input type="radio" class="btn-check" id="f3measure1" name="f3measure" value="R"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f3measure1">Per 100,000 inhabitants</label>
 						</div>
 					</div>
 				</div>
@@ -126,6 +264,8 @@
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<!-- ApexCharts -->
 	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<!-- google charts (map) -->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	<!-- other JS-->
 	<script src="js/jquery.csv.min.js"></script>
 	<script src="js/scripts.js"></script>
