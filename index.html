@@ -2,114 +2,133 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+	<meta name="description" content="" />
+	<meta name="author" content="" />
 
-    <title>Violence Against Women &raquo; The Data</title>
+	<title>Violence Against Women &raquo; The Data</title>
 
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+	<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+	<!-- Core theme CSS (includes Bootstrap)-->
+	<link href="css/styles.css" rel="stylesheet" />
 </head>
 
 <body class="bg-dark text-light">
-    <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <span class="navbar-brand"></span>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link text-white active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link text-white" href="#">Credits</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+	<!-- Responsive navbar-->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+			<span class="navbar-brand"></span>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link text-white active" aria-current="page" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-white" href="#">Credits</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <!-- Page content-->
-    <div class="container-xxl">
-        <div class="row py-5 px-3">
-            <div class="col-12 col-lg-6 py-2">
-                <h1>How are crimes distributed across age and race?</h1>
-                <p class="lead py-2">
-                    While assaults and homicides peak in the age range of 20 - 40 years,
-                    sex offenses are highest in the age range of 10 - 25 years.
-                </p>
-                <p class="lead pb-2">
-                    Assaults and homicides against Black or African American women seem to be skewed towards a younger
-                    age range than other races.
-                </p>
-                <p class="lead pb-2">
-                    Homicides show a wider age spread than other crimes.
-                </p>
-           </div>
+	<!-- Page content-->
+	<div class="container-xxl">
+		<div class="row py-5 px-3">
+			<div class="col-12 col-lg-6 py-2">
+				<div class="scrollytellingBox">
+					<h1>How are crimes distributed across age and race?</h1>
+					<p class="lead py-2">
+						While assaults and homicides peak in the age range of 20 - 40 years,
+						sex offenses are highest in the age range of 10 - 25 years.
+					</p>
+					<p class="lead pb-2">
+						Assaults and homicides against Black or African American women seem
+						to be skewed towards a younger age range than other races.
+					</p>
+					<p class="lead pb-2">
+						Homicides show a wider age spread than other crimes.
+					</p>
+				</div>
 
-            <div class="col-12 col-lg-6">
-                <h6 class="text-center">
-                    Reported incidents in the USA in 2020 involving violence against women, by age, race and category
-                </h6>
-                <div id="chart-age-race"></div>
-                <div id="filters-age-race" style="display: none">
+			</div>
 
-                    <p>Offense category</p>
-                    <div class="btn-group" role="group" aria-label="Chart filter options - offense category">
-                        <input type="radio" class="btn-check" id="f1type0" name="f1type" value="0" autocomplete="off"
-                            checked>
-                        <label class="btn btn-outline-primary" for="f1type0">All</label>
+			<div class="col-12 col-lg-6">
+				<div class="scrollytellingBox right delayed">
+					<h6 class="text-center">
+						Reported incidents in the USA in 2020 involving violence against
+						women, by age, race and category
+					</h6>
+					<div id="chart-age-race"></div>
+					<div id="filters-age-race" style="display: none">
+						<p>Offense category</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - offense category">
+							<input type="radio" class="btn-check" id="f1type0" name="f1type" value="0"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f1type0">All</label>
 
-                        <input type="radio" class="btn-check" id="f1type1" name="f1type" value="1" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1type1">Sex offenses</label>
+							<input type="radio" class="btn-check" id="f1type1" name="f1type" value="1"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1type1">Sex offenses</label>
 
-                        <input type="radio" class="btn-check" id="f1type2" name="f1type" value="2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1type2">Assault</label>
+							<input type="radio" class="btn-check" id="f1type2" name="f1type" value="2"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1type2">Assault</label>
 
-                        <input type="radio" class="btn-check" id="f1type3" name="f1type" value="3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1type3">Homicide</label>
-                    </div>
+							<input type="radio" class="btn-check" id="f1type3" name="f1type" value="3"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1type3">Homicide</label>
+						</div>
 
-                    <p>Victim race</p>
-                    <div class="btn-group" role="group" aria-label="Chart filter options - victim race">
-                        <input type="radio" class="btn-check" id="f1race0" name="f1race" value="0" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1race0">All</label>
+						<p>Victim race</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - victim race">
+							<input type="radio" class="btn-check" id="f1race0" name="f1race" value="0"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1race0">All</label>
 
-                        <input type="radio" class="btn-check" id="f1race1" name="f1race" value="1" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1race1">White</label>
+							<input type="radio" class="btn-check" id="f1race1" name="f1race" value="1"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1race1">White</label>
 
-                        <input type="radio" class="btn-check" id="f1race2" name="f1race" value="2" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1race2">Black</label>
+							<input type="radio" class="btn-check" id="f1race2" name="f1race" value="2"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1race2">Black</label>
 
-                        <input type="radio" class="btn-check" id="f1race3" name="f1race" value="3" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1race3">Native</label>
+							<input type="radio" class="btn-check" id="f1race3" name="f1race" value="3"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1race3">Native</label>
 
-                        <input type="radio" class="btn-check" id="f1race4" name="f1race" value="4" autocomplete="off">
-                        <label class="btn btn-outline-primary" for="f1race4">Asian</label>
+							<input type="radio" class="btn-check" id="f1race4" name="f1race" value="4"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f1race4">Asian</label>
 
-                        <input type="radio" class="btn-check" id="f1race5" name="f1race" value="5" autocomplete="off"
-                            checked>
-                        <label class="btn btn-outline-primary" for="f1race5">Aggregate</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+							<input type="radio" class="btn-check" id="f1race5" name="f1race" value="5"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f1race5">Aggregate</label>
+						</div>
+					</div>
+				</div>
 
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- jQuery -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-    <!-- ApexCharts -->
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- other JS-->
-    <script src="js/jquery.csv.min.js"></script>
-    <script src="js/scripts.js"></script>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JS-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+	<!-- ApexCharts -->
+	<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+	<!-- other JS-->
+	<script src="js/jquery.csv.min.js"></script>
+	<script src="js/scripts.js"></script>
 </body>
 
 </html>

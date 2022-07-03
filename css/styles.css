@@ -1,9 +1,24 @@
 @charset "UTF-8";
-/*!
-* Start Bootstrap - Bare v5.0.7 (https://startbootstrap.com/template/bare)
-* Copyright 2013-2021 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-bare/blob/master/LICENSE)
-*/
+
+.scrollytellingBox{
+  transform: translateX(-10%);
+  opacity: 0;
+  transition: opacity 0.8s, transform 0.8s ease;
+}
+
+.scrollytellingBox.delayed{
+  transition-delay: .5s;
+}
+
+.scrollytellingBox.right{
+  transform: translateX(10%);
+}
+
+.scrollytellingBox.show, .scrollytellingBox.right.show {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

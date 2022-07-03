@@ -115,4 +115,20 @@ $(document).ready(function () {
 			data: chart1data.filter(x => x.offense == f1type && x.race == f1race).map(x => [(+x.agegroup + .5) * 5, x.count])
 		}];
 	}
+
+	const boxes = document.querySelectorAll('.scrollytellingBox');
+	window.addEventListener('scroll', checkBoxes);
+	checkBoxes();
+	function checkBoxes() {
+		const triggerBottom = window.innerHeight * 0.7;
+		boxes.forEach(box => {
+			const boxTop = box.getBoundingClientRect().top;
+			if (boxTop < triggerBottom) {
+				box.classList.add('show');
+			}
+			else {
+				box.classList.remove('show');
+			}
+		})
+	}
 });
