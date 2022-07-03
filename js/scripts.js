@@ -276,7 +276,6 @@ $(document).ready(function () {
 		return google.visualization.arrayToDataTable(arr);
 	}
 
-
 	// Chart 4
 	var chart4;
 	var chart4data;
@@ -331,14 +330,49 @@ $(document).ready(function () {
 		offenses.forEach(function (o) {
 			series.push({
 				name: offenseName[o],
-				data: chart4data.filter(x => x.offense == o).map(x => Math.log(+x.count))
+				data: chart4data.filter(x => x.offense == o).map(x => +x.count > 0 ? Math.log(+x.count) : -1000)
 			});
 		});
 		return series;
 	}
 
+	// Chart 5
+	var chart5;
+	var chart5data;
+	$.get("assets/femicides_relationship.csv", function (data) {
+
+		chart5data = $.csv.toObjects(data);
+		var names = ['Family member', 'Intimate partner', 'Other, known to victim', 'Unknown to victim'];
+
+		var options = {
+			chart: {
+				type: 'bar',
+			},
+			plotOptions: {
+				bar: {
+					horizontal: true,
+				},
+			},
+			series: seriesChart5(),
+			xaxis: {
+				categories: chart5data.map(x => names[x.Relationship]),
+			},
+		}
+
+		chart5 = new ApexCharts(document.querySelector("#chart-relationship"), options);
+		chart5.render();
+	});
+
+	function seriesChart5() {
+
+		return [{
+			name: 'Femicides',
+			data: chart5data.map(x => +x.count)
+		}];
+	}
+
 	// show/hide while scrolling
-	const boxes = document.querySelectorAll('.scrollytellingBox');
+	const boxes = document.querySelectorAll('.scrollytellingBox, .scrollytellingBG');
 	window.addEventListener('scroll', checkBoxes);
 	checkBoxes();
 	function checkBoxes() {
