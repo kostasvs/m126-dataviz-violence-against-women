@@ -1,0 +1,181 @@
+code;name;offense;count
+1;Air/Bus/Train Terminal;1;243
+1;Air/Bus/Train Terminal;2;1900
+1;Air/Bus/Train Terminal;3;2
+2;Bank/Savings and Loan;1;26
+2;Bank/Savings and Loan;2;447
+2;Bank/Savings and Loan;3;2
+3;Bar/Nightclub;1;519
+3;Bar/Nightclub;2;6117
+3;Bar/Nightclub;3;27
+4;Church/Synagogue/Temple/Mosque;1;228
+4;Church/Synagogue/Temple/Mosque;2;743
+4;Church/Synagogue/Temple/Mosque;3;3
+5;Commercial/Office Building;1;694
+5;Commercial/Office Building;2;6188
+5;Commercial/Office Building;3;18
+6;Construction Site;1;46
+6;Construction Site;2;123
+6;Construction Site;3;1
+7;Convenience Store;1;310
+7;Convenience Store;2;8178
+7;Convenience Store;3;26
+8;Department/Discount Store;1;356
+8;Department/Discount Store;2;5011
+8;Department/Discount Store;3;2
+10;Field/Woods;1;1104
+10;Field/Woods;2;2835
+10;Field/Woods;3;56
+11;Government/Public Building;1;909
+11;Government/Public Building;2;2882
+11;Government/Public Building;3;2
+12;Grocery/Supermarket;1;260
+12;Grocery/Supermarket;2;3790
+12;Grocery/Supermarket;3;9
+13;Highway/Road/Alley/Street/Sidewalk;1;4379
+13;Highway/Road/Alley/Street/Sidewalk;2;85227
+13;Highway/Road/Alley/Street/Sidewalk;3;803
+14;Hotel/Motel/Etc.;1;4383
+14;Hotel/Motel/Etc.;2;24547
+14;Hotel/Motel/Etc.;3;66
+15;Jail/Prison/Penitentiary/Corrections Facility;1;331
+15;Jail/Prison/Penitentiary/Corrections Facility;2;3101
+15;Jail/Prison/Penitentiary/Corrections Facility;3;2
+16;Lake/Waterway/Beach;1;216
+16;Lake/Waterway/Beach;2;617
+16;Lake/Waterway/Beach;3;10
+17;Liquor Store;1;28
+17;Liquor Store;2;530
+17;Liquor Store;3;1
+18;Parking/Drop Lot/Garage;1;2392
+18;Parking/Drop Lot/Garage;2;35529
+18;Parking/Drop Lot/Garage;3;173
+19;Rental Storage Facility;1;97
+19;Rental Storage Facility;2;949
+19;Rental Storage Facility;3;2
+20;Residence/Home;1;73818
+20;Residence/Home;2;639267
+20;Residence/Home;3;1829
+21;Restaurant;1;677
+21;Restaurant;2;9611
+21;Restaurant;3;22
+22;School/College;1;385
+22;School/College;2;1705
+22;School/College;3;0
+23;Service/Gas Station;1;248
+23;Service/Gas Station;2;5359
+23;Service/Gas Station;3;17
+24;Specialty Store;1;278
+24;Specialty Store;2;2560
+24;Specialty Store;3;3
+25;Other/Unknown;1;5320
+25;Other/Unknown;2;17788
+25;Other/Unknown;3;85
+26;Abandoned/Condemned Structure;1;119
+26;Abandoned/Condemned Structure;2;358
+26;Abandoned/Condemned Structure;3;2
+27;Amusement Park;1;39
+27;Amusement Park;2;192
+27;Amusement Park;3;1
+28;Arena/Stadium/Fairgrounds/Coliseum;1;38
+28;Arena/Stadium/Fairgrounds/Coliseum;2;195
+28;Arena/Stadium/Fairgrounds/Coliseum;3;0
+29;ATM Separate from Bank;1;10
+29;ATM Separate from Bank;2;60
+29;ATM Separate from Bank;3;0
+30;Auto Dealership New/Used;1;24
+30;Auto Dealership New/Used;2;206
+30;Auto Dealership New/Used;3;0
+31;Camp/Campground;1;227
+31;Camp/Campground;2;842
+31;Camp/Campground;3;0
+32;Daycare Facility;1;148
+32;Daycare Facility;2;580
+32;Daycare Facility;3;1
+33;Dock/Wharf/Freight/Modal Terminal;1;12
+33;Dock/Wharf/Freight/Modal Terminal;2;110
+33;Dock/Wharf/Freight/Modal Terminal;3;0
+34;Farm Facility;1;50
+34;Farm Facility;2;97
+34;Farm Facility;3;3
+35;Gambling Facility/Casino/Race Track;1;46
+35;Gambling Facility/Casino/Race Track;2;660
+35;Gambling Facility/Casino/Race Track;3;1
+36;Industrial Site;1;51
+36;Industrial Site;2;297
+36;Industrial Site;3;1
+37;Military Installation;1;16
+37;Military Installation;2;21
+37;Military Installation;3;0
+38;Park/Playground;1;1434
+38;Park/Playground;2;5006
+38;Park/Playground;3;24
+39;Rest Area;1;53
+39;Rest Area;2;404
+39;Rest Area;3;0
+40;School-College/University;1;488
+40;School-College/University;2;982
+40;School-College/University;3;1
+41;School-Elementary/Secondary;1;1705
+41;School-Elementary/Secondary;2;7571
+41;School-Elementary/Secondary;3;0
+42;Shelter-Mission/Homeless;1;120
+42;Shelter-Mission/Homeless;2;884
+43;Shelter-Mission/Homeless;3;0
+43;Shopping Mall;1;107
+43;Shopping Mall;2;941
+43;Shopping Mall;3;2
+44;Tribal Lands;1;8
+44;Tribal Lands;2;43
+44;Tribal Lands;3;0
+45;Community Center;1;82
+45;Community Center;2;351
+45;Community Center;3;1
+46;Drug Store/Doctor's Office/Hospital;1;1505
+46;Drug Store/Doctor's Office/Hospital;2;10120
+46;Drug Store/Doctor's Office/Hospital;3;13
+1;Air/Bus/Train Terminal;0;2143
+2;Bank/Savings and Loan;0;475
+3;Bar/Nightclub;0;6626
+4;Church/Synagogue/Temple/Mosque;0;970
+5;Commercial/Office Building;0;6894
+6;Construction Site;0;170
+7;Convenience Store;0;8496
+8;Department/Discount Store;0;5366
+10;Field/Woods;0;3983
+11;Government/Public Building;0;3788
+12;Grocery/Supermarket;0;4055
+13;Highway/Road/Alley/Street/Sidewalk;0;90098
+14;Hotel/Motel/Etc.;0;28948
+15;Jail/Prison/Penitentiary/Corrections Facility;0;3430
+16;Lake/Waterway/Beach;0;837
+17;Liquor Store;0;558
+18;Parking/Drop Lot/Garage;0;38017
+19;Rental Storage Facility;0;1048
+20;Residence/Home;0;713709
+21;Restaurant;0;10294
+22;School/College;0;2085
+23;Service/Gas Station;0;5615
+24;Specialty Store;0;2839
+25;Other/Unknown;0;23152
+26;Abandoned/Condemned Structure;0;478
+27;Amusement Park;0;231
+28;Arena/Stadium/Fairgrounds/Coliseum;0;233
+29;ATM Separate from Bank;0;70
+30;Auto Dealership New/Used;0;229
+31;Camp/Campground;0;1066
+32;Daycare Facility;0;728
+33;Dock/Wharf/Freight/Modal Terminal;0;122
+34;Farm Facility;0;149
+35;Gambling Facility/Casino/Race Track;0;706
+36;Industrial Site;0;349
+37;Military Installation;0;37
+38;Park/Playground;0;6436
+39;Rest Area;0;456
+40;School-College/University;0;1464
+41;School-Elementary/Secondary;0;9267
+42;Shelter-Mission/Homeless;0;1000
+43;Shopping Mall;0;1048
+44;Tribal Lands;0;51
+45;Community Center;0;432
+46;Drug Store/Doctor's Office/Hospital;0;11619

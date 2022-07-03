@@ -276,6 +276,67 @@ $(document).ready(function () {
 		return google.visualization.arrayToDataTable(arr);
 	}
 
+
+	// Chart 4
+	var chart4;
+	var chart4data;
+	$.get("assets/us-incident-locations.csv", function (data) {
+
+		chart4data = $.csv.toObjects(data, { separator: ';' });
+		var locationCounts = chart4data.filter(x => x.offense == 0).map(x => [x.name, +x.count, x.code]);
+		locationCounts.sort((a, b) => b[1] - a[1]);
+		var codesSorted = locationCounts.map(x => x[2]);
+		var locationsSorted = locationCounts.map(x => x[0]);
+		chart4data.sort((a, b) => codesSorted.indexOf(a.code) - codesSorted.indexOf(b.code));
+
+		var options = {
+			chart: {
+				type: 'bar',
+				height: 1200
+			},
+			plotOptions: {
+				bar: {
+					horizontal: true,
+				},
+			},
+			series: seriesChart4(),
+			xaxis: {
+				categories: locationsSorted,
+				labels: {
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					}
+				},
+				min: 0,
+				tickAmount: 1,
+			},
+			tooltip: {
+				y: {
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					}
+				}
+			},
+		}
+
+		chart4 = new ApexCharts(document.querySelector("#chart-location1"), options);
+		chart4.render();
+	});
+
+	function seriesChart4() {
+
+		var offenses = [1, 2, 3];
+		var offenseName = ['', 'Sex offenses', 'Assault', 'Homicide'];
+		var series = [];
+		offenses.forEach(function (o) {
+			series.push({
+				name: offenseName[o],
+				data: chart4data.filter(x => x.offense == o).map(x => Math.log(+x.count))
+			});
+		});
+		return series;
+	}
+
 	// show/hide while scrolling
 	const boxes = document.querySelectorAll('.scrollytellingBox');
 	window.addEventListener('scroll', checkBoxes);
