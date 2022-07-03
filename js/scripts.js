@@ -347,6 +347,7 @@ $(document).ready(function () {
 		var options = {
 			chart: {
 				type: 'bar',
+				height: 280,
 			},
 			plotOptions: {
 				bar: {
@@ -369,6 +370,65 @@ $(document).ready(function () {
 			name: 'Femicides',
 			data: chart5data.map(x => +x.count)
 		}];
+	}
+
+	// Chart 6
+	var chart6;
+	var chart6data;
+	var f6type = 0;
+	$.get("assets/us-incident-relationships.csv", function (data) {
+
+		chart6data = $.csv.toObjects(data);
+
+		var options = {
+			chart: {
+				type: 'bar',
+				height: 500,
+			},
+			plotOptions: {
+				bar: {
+					horizontal: true,
+				},
+			},
+			series: seriesChart6(),
+			xaxis: {
+				categories: chart6data.filter(x => x.offense == 1).map(x => x.relationship),
+			},
+		}
+
+		chart6 = new ApexCharts(document.querySelector("#chart-relationship-us"), options);
+		chart6.render();
+		$('#filters-relationship-us').fadeIn().find('.btn-check').each(function () {
+			$(this).click(clickF6Option);
+		});
+	});
+
+	function clickF6Option() {
+
+		var optName = $(this).attr('name');
+		var optVal = $(this).val();
+
+		if (optName == 'f6type') {
+			f6type = optVal;
+		}
+
+		chart6.updateSeries(seriesChart6());
+	}
+
+	function seriesChart6() {
+
+		var offenses = [1, 2, 3];
+		var offenseName = ['', 'Sex offenses', 'Assault', 'Homicide'];
+		var series = [];
+		offenses.forEach(function (o) {
+			if (f6type == 0 || o == f6type) {
+				series.push({
+					name: offenseName[o],
+					data: chart6data.filter(x => x.offense == o).map(x => +x.count)
+				});
+			}
+		});
+		return series;
 	}
 
 	// show/hide while scrolling
