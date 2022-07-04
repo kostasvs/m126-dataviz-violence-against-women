@@ -51,7 +51,7 @@ $(document).ready(function () {
 			series: seriesChart1(),
 			xaxis: {
 				title: {
-					text: "Age (years)"
+					text: "Victim age (years)"
 				},
 				type: 'numeric',
 				min: 0,
