@@ -187,9 +187,12 @@ $(document).ready(function () {
 	var f3end = 2020;
 	var f3gender = 'Total';
 	var f3measure = 'N';
+	var f3region = 'world';
 	var mapOptions = {
 		backgroundColor: 'transparent',
 		colorAxis: { colors: ['#F5F5F5', '#e31b23'] },
+		datalessRegionColor: 'gray',
+		region: f3region,
 	};
 
 	google.charts.load('current', {
@@ -207,7 +210,7 @@ $(document).ready(function () {
 			filters.fadeIn().find('.btn-check').each(function () {
 				$(this).click(clickF3Option);
 			});
-			filters.find('.form-range').each(function () {
+			filters.find('.form-range, .form-select').each(function () {
 				$(this).change(clickF3Option);
 			});
 
@@ -245,6 +248,10 @@ $(document).ready(function () {
 				f3measure = optVal;
 				break;
 
+			case 'f3region':
+				f3region = optVal;
+				break;
+
 			default:
 				return;
 		}
@@ -253,6 +260,7 @@ $(document).ready(function () {
 		f3end = $('#f3end').val();
 		$('#f3starttext').text(f3start);
 		$('#f3endtext').text(f3end);
+		mapOptions.region = f3region;
 		chart3.draw(seriesChart3(), mapOptions);
 	}
 
@@ -383,7 +391,7 @@ $(document).ready(function () {
 		var options = {
 			chart: {
 				type: 'bar',
-				height: 500,
+				height: 600,
 			},
 			plotOptions: {
 				bar: {
