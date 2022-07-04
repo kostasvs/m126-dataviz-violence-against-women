@@ -391,7 +391,7 @@ $(document).ready(function () {
 		var options = {
 			chart: {
 				type: 'bar',
-				height: 600,
+				height: 1000,
 			},
 			plotOptions: {
 				bar: {
