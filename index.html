@@ -340,7 +340,7 @@
 						<div class="btn-group" role="group" aria-label="Chart filter options - offense category">
 							<input type="radio" class="btn-check" id="f6type0" name="f6type" value="0"
 								autocomplete="off" checked />
-							<label class="btn btn-outline-primary" for="f6type0">All</label>
+							<label class="btn btn-outline-primary" for="f6type0">Combined</label>
 
 							<input type="radio" class="btn-check" id="f6type1" name="f6type" value="1"
 								autocomplete="off" />
@@ -385,7 +385,7 @@
 						women, by category, perpetrator gender, and victim/perpetrator's: 1) age, 2) race
 					</h6>
 					<div id="chart-ages-us"></div>
-					<div id="chart-races-us"></div>
+					<div id="chart-races-us" class="px-4"></div>
 
 					<div id="filters-ages-us" style="display: none">
 						<p class="mb-1">Offense category</p>
@@ -422,6 +422,65 @@
 			</div>
 		</div>
 
+
+		<div class="row scrollytellingTrigger py-5 px-3">
+			<div class="col-12 col-lg-6 py-2">
+				<div class="scrollytellingBox">
+					<h1>USA: How are crimes distributed across age and race?</h1>
+					<p class="lead py-2">
+						While assaults and homicides peak in the age range of 20 - 40 years,
+						sex offenses are highest in the age range of 10 - 25 years.
+					</p>
+					<p class="lead pb-2">
+						Assaults and homicides against Black or African American women seem
+						to be skewed towards a younger age range than other races.
+					</p>
+					<p class="lead pb-2">
+						Homicides show a wider age spread than other crimes.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-lg-6">
+				<div class="scrollytellingBox right delayed">
+					<h6 class="text-center pt-3">
+						Reported incidents in the USA in 2020 involving violence against
+						women, by category, perpetrator gender, and: 1) offender weapon/mechanism in logarithmic scale, 2) victim injuries
+					</h6>
+					<div id="chart-weapons-us"></div>
+					<div id="chart-injuries-us"></div>
+
+					<div id="filters-weapons-us" style="display: none">
+						<p class="mb-1">Offense category</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - offense category">
+							<input type="radio" class="btn-check" id="f9type1" name="f9type" value="1"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f9type1">Sex offenses</label>
+
+							<input type="radio" class="btn-check" id="f9type2" name="f9type" value="2"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f9type2">Assault</label>
+
+							<input type="radio" class="btn-check" id="f9type3" name="f9type" value="3"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f9type3">Homicide</label>
+						</div>
+
+						<p class="mt-3 mb-1">Perpetrator gender</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - perpetrator gender">
+							<input type="radio" class="btn-check" id="f9gender1" name="f9gender" value="M"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f9gender1">Male</label>
+
+							<input type="radio" class="btn-check" id="f9gender2" name="f9gender" value="F"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f9gender2">Female</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- end of Page content -->
 	</div>
 

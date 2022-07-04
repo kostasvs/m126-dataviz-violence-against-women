@@ -310,12 +310,13 @@ $(document).ready(function () {
 			xaxis: {
 				categories: locationsSorted,
 				labels: {
+					rotateAlways: true,
+					minHeight: 80,
 					formatter: function (val) {
 						return Math.exp(val).toFixed(0)
 					}
 				},
 				min: 0,
-				tickAmount: 1,
 			},
 			tooltip: {
 				y: {
@@ -585,6 +586,157 @@ $(document).ready(function () {
 		chart8 = new ApexCharts(document.querySelector("#chart-races-us"), options);
 		chart8.render();
 	});
+
+	// Chart 9
+	var chart9;
+	var chart9data;
+	var f9type = 3, f9gender = 'M';
+	$.get("assets/us-weapons.csv", function (data) {
+
+		chart9data = $.csv.toObjects(data);
+
+		var options = {
+			chart: {
+				type: 'bar',
+				height: 600,
+			},
+			plotOptions: {
+				bar: {
+					horizontal: true,
+				},
+			},
+			legend: {
+				showForSingleSeries: false,
+			},
+			series: seriesChart9(),
+			xaxis: {
+				categories: categoriesChart9(),
+				labels: {
+					rotateAlways: true,
+					minHeight: 50,
+					maxHeight: 50,
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					},
+				},
+			},
+			tooltip: {
+				y: {
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					}
+				}
+			},
+		}
+
+		chart9 = new ApexCharts(document.querySelector("#chart-weapons-us"), options);
+		chart9.render();
+		$('#filters-weapons-us').fadeIn().find('.btn-check').each(function () {
+			$(this).click(clickF9Option);
+		});
+	});
+
+	function clickF9Option() {
+
+		var optName = $(this).attr('name');
+		var optVal = $(this).val();
+
+		switch (optName) {
+			case 'f9type':
+				f9type = optVal;
+				break;
+
+			case 'f9gender':
+				f9gender = optVal;
+				break;
+
+			default:
+				return;
+		}
+
+		chart9.updateOptions({
+			series: seriesChart9(),
+			xaxis: {
+				categories: categoriesChart9(),
+			},
+		});
+		if (chart10 != undefined) {
+			chart10.updateOptions({
+				series: seriesChart10(),
+				xaxis: {
+					categories: categoriesChart10(),
+				},
+			});
+		}
+	}
+
+	function seriesChart9() {
+
+		return [{
+			name: 'Incidents',
+			data: chart9data.filter(x => +x.offense == f9type && x.offender_gender == f9gender)
+				.map(x => +x.count > 0 ? Math.log(+x.count) : -1000)
+		}];
+	}
+
+	function categoriesChart9() {
+
+		var names = ['', 'Unarmed', 'Firearm', 'Handgun', 'Rifle', 'Shotgun', 'Other Firearm', 'Lethal Cutting Instrument',
+			'Club/Blackjack/Brass Knuckles', 'Knife/Cutting Instrument', 'Blunt Object', 'Motor Vehicle/Vessel',
+			'Personal Weapons', 'Poison', 'Explosives', 'Fire/Incendiary Device', 'Drugs/Narcotics/Sleeping Pills',
+			'Asphyxiation', 'Other', 'Unknown', 'None', 'Firearm (Automatic)', 'Handgun (Automatic)', 'Rifle (Automatic)',
+			'Shotgun (Automatic)', 'Other Firearm (Automatic)', 'Pushed or Thrown Out Window', 'Drowning', 'Strangulation'];
+		return chart9data.filter(x => +x.offense == f9type && x.offender_gender == f9gender).map(x => names[+x.weapon]);
+	}
+
+	// Chart 10
+	var chart10 = undefined;
+	var chart10data;
+	$.get("assets/us-injuries.csv", function (data) {
+
+		chart10data = $.csv.toObjects(data);
+
+		var options = {
+			chart: {
+				type: 'bar',
+			},
+			legend: {
+				showForSingleSeries: false,
+			},
+			plotOptions: {
+				bar: {
+					horizontal: true,
+				},
+			},
+			series: seriesChart10(),
+			xaxis: {
+				categories: categoriesChart10(),
+				labels: {
+					rotateAlways: true,
+					minHeight: 50,
+					maxHeight: 50,
+				}
+			},
+		}
+
+		chart10 = new ApexCharts(document.querySelector("#chart-injuries-us"), options);
+		chart10.render();
+	});
+
+	function seriesChart10() {
+
+		return [{
+			name: 'Incidents',
+			data: chart10data.filter(x => +x.offense == f9type && x.offender_gender == f9gender).map(x => +x.count)
+		}];
+	}
+
+	function categoriesChart10() {
+
+		var names = ['', 'Apparent Broken Bones', 'Possible Internal Injury', 'Severe Laceration', 'Minor Injury',
+			'None', 'Other Major Injury', 'Loss of Teeth', 'Unconscious'];
+		return chart10data.filter(x => +x.offense == f9type && x.offender_gender == f9gender).map(x => names[+x.injury]);
+	}
 
 	// show/hide while scrolling
 	const boxes = document.querySelectorAll('.scrollytellingTrigger');
