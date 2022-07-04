@@ -452,10 +452,9 @@ $(document).ready(function () {
 		chart7data = $.csv.toObjects(data);
 
 		var options = {
-			series: seriesChart7(),
+			series: seriesChart7(false),
 			chart: {
 				type: 'heatmap',
-				height: 420,
 			},
 			colors: ["#e10000"],
 			stroke: {
@@ -504,25 +503,29 @@ $(document).ready(function () {
 				return;
 		}
 
-		chart7.updateSeries(seriesChart7());
+		chart7.updateSeries(seriesChart7(false));
+		if (chart8 != undefined) chart8.updateSeries(seriesChart7(true));
 	}
 
-	function seriesChart7() {
+	function seriesChart7(forRaces) {
 
-		var filtered = chart7data.filter(x => x.offense == f7type && x.offender_gender == f7gender);
+		var filtered = (forRaces ? chart8data : chart7data)
+			.filter(x => x.offense == f7type && x.offender_gender == f7gender);
 		var series = [];
-		var ages = [...Array(20).keys()];
-		for (const offender_agegroup of ages) {
+		var groups = forRaces ? [1, 2, 3, 4] : [...Array(20).keys()];
+		var races = ['Unknown', 'White', 'Black', 'Native', 'Asian'];
+		for (const offender_group of groups) {
 
-			var data = filtered.filter(x => x.offender_agegroup == offender_agegroup).map(function (x) {
+			var data = filtered.filter(x => (forRaces ? x.offender_race : x.offender_agegroup) == offender_group);
+			data = data.map(function (x) {
 				return {
-					'x': +x.victim_agegroup,
+					'x': +(forRaces ? x.victim_race : x.victim_agegroup),
 					'y': +x.count,
 				}
 			});
 
 			// fill missing data with zeros
-			for (let i = 0; i < ages.length; i++) {
+			for (const i of groups) {
 				if (data.findIndex(a => a.x == i) == -1) {
 					data.push({
 						'x': i,
@@ -532,16 +535,56 @@ $(document).ready(function () {
 			}
 
 			for (const elem of data) {
-				elem.x = (elem.x * 5) + " - " + ((elem.x + 1) * 5);
+				elem.x = forRaces ? races[elem.x] : (elem.x * 5) + " - " + ((elem.x + 1) * 5);
 			}
 
 			series.push({
-				name: (offender_agegroup * 5) + " - " + ((offender_agegroup + 1) * 5),
+				name: forRaces ?
+					races[offender_group] :
+					(offender_group * 5) + " - " + ((offender_group + 1) * 5),
 				data: data
 			});
 		}
 		return series;
 	}
+
+	// Chart 8
+	var chart8 = undefined;
+	var chart8data;
+	$.get("assets/us-races.csv", function (data) {
+
+		chart8data = $.csv.toObjects(data);
+
+		var options = {
+			series: seriesChart7(true),
+			chart: {
+				type: 'heatmap',
+				height: 420,
+			},
+			colors: ["#e10000"],
+			stroke: {
+				width: 1,
+				colors: ["darkgray"],
+			},
+			xaxis: {
+				title: {
+					text: "Perpetrator race"
+				},
+				labels: {
+					rotateAlways: true,
+					maxHeight: 70,
+				}
+			},
+			yaxis: {
+				title: {
+					text: "Victim race"
+				},
+			},
+		}
+
+		chart8 = new ApexCharts(document.querySelector("#chart-races-us"), options);
+		chart8.render();
+	});
 
 	// show/hide while scrolling
 	const boxes = document.querySelectorAll('.scrollytellingTrigger');
