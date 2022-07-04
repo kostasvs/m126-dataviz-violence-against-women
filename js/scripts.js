@@ -272,7 +272,7 @@ $(document).ready(function () {
 		arr = chart3data.filter(x => x.Sex == f3gender &&
 			+x.Year >= f3start && +x.Year <= f3end &&
 			x.Unit == f3measure)
-			.map(x => [x.Country, +x.VALUE]);
+			.map(x => [x.Country, f3measure == 'N' ? Math.floor(+x.VALUE) : +x.VALUE]);
 		arr.forEach(function (item) {
 			var i = countries.findIndex(function (c) {
 				return c[0] == item[0];
