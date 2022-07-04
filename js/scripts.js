@@ -431,6 +431,17 @@ $(document).ready(function () {
 				labels: {
 					rotateAlways: true,
 					minHeight: 64,
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					}
+				},
+				min: 0,
+			},
+			tooltip: {
+				y: {
+					formatter: function (val) {
+						return Math.exp(val).toFixed(0)
+					}
 				}
 			},
 		}
@@ -464,7 +475,7 @@ $(document).ready(function () {
 			if (f6type == 0 || o == f6type) {
 				series.push({
 					name: offenseName[o],
-					data: chart6data.filter(x => x.offense == o).map(x => +x.count)
+					data: chart6data.filter(x => x.offense == o).map(x => +x.count > 0 ? Math.log(+x.count) : -1000)
 				});
 			}
 		});
