@@ -520,6 +520,8 @@ $(document).ready(function () {
 					'y': +x.count,
 				}
 			});
+
+			// fill missing data with zeros
 			for (let i = 0; i < ages.length; i++) {
 				if (data.findIndex(a => a.x == i) == -1) {
 					data.push({
@@ -538,12 +540,11 @@ $(document).ready(function () {
 				data: data
 			});
 		}
-		console.log(series)
 		return series;
 	}
 
 	// show/hide while scrolling
-	const boxes = document.querySelectorAll('.scrollytellingBox, .scrollytellingBG');
+	const boxes = document.querySelectorAll('.scrollytellingTrigger');
 	window.addEventListener('scroll', checkBoxes);
 	checkBoxes();
 	function checkBoxes() {
@@ -551,7 +552,7 @@ $(document).ready(function () {
 		boxes.forEach(box => {
 			const boxTop = box.getBoundingClientRect().top;
 			if (boxTop < triggerBottom) {
-				box.classList.add('show');
+				$(box).find('.scrollytellingBox').addClass('show');
 			}
 		})
 	}
