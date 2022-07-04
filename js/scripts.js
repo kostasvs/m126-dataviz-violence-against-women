@@ -669,6 +669,7 @@ $(document).ready(function () {
 
 		chart9 = new ApexCharts(document.querySelector("#chart-weapons-us"), options);
 		chart9.render();
+
 		$('#filters-weapons-us').fadeIn().find('.btn-check').each(function () {
 			$(this).click(clickF9Option);
 		});
@@ -774,6 +775,127 @@ $(document).ready(function () {
 		var names = ['', 'Apparent Broken Bones', 'Possible Internal Injury', 'Severe Laceration', 'Minor Injury',
 			'None', 'Other Major Injury', 'Loss of Teeth', 'Unconscious'];
 		return chart10data.filter(x => +x.offense == f9type && x.offender_gender == f9gender).map(x => names[+x.injury]);
+	}
+
+	// Chart 11
+	var chart11;
+	var chart11data;
+	var f11year = 2021;
+	const monthDiv = 4;
+	var chart11tooltips = [];
+	$.get("assets/Femicides_greece_full.csv", function (data) {
+
+		chart11data = $.csv.toObjects(data, { separator: ';' });
+
+		var options = {
+			series: seriesChart11(),
+			chart: {
+				type: 'heatmap',
+				height: 200,
+			},
+			colors: ["#e10000"],
+			stroke: {
+				width: 3,
+				colors: ["darkgray"],
+			},
+			tooltip: {
+				custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+
+					var text = 'None';
+					var extraClasses = '';
+
+					var monthId = dataPointIndex;
+					var div = seriesIndex;
+
+					var obj = chart11tooltips.find(x => x.month == monthId && x.div == div);
+					if (obj !== undefined) {
+						text = '<ul>' + obj.text + '</ul>';
+						extraClasses = ' ps-0 pb-0';
+					}
+					return '<div class="arrow_box p-2' + extraClasses + '">' + text + '</div>';
+				},
+			},
+			xaxis: {
+				labels: {
+					maxHeight: 70,
+				}
+			},
+			yaxis: {
+				labels: {
+					show: false,
+				}
+			}
+		}
+
+		chart11 = new ApexCharts(document.querySelector("#chart-femicides-gr"), options);
+		chart11.render();
+
+		$('#filters-femicides-gr').fadeIn().find('.btn-check').each(function () {
+			$(this).click(clickF11Option);
+		});
+	});
+
+	function clickF11Option() {
+
+		var optName = $(this).attr('name');
+		var optVal = $(this).val();
+
+		if (optName == 'f11year') {
+			f11year = optVal;
+		}
+
+		chart11.updateSeries(seriesChart11());
+	}
+
+	function seriesChart11() {
+
+		chart11tooltips = [];
+		var yearData = chart11data.filter(x => x.Year == f11year);
+		var series = [];
+		var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+		var monthIds = [...monthNames.keys()];
+		for (let i = 0; i < monthDiv; i++) {
+
+			var data = [];
+			for (const m of monthIds) {
+				var n = 0;
+				for (const d of yearData) {
+					var frac = Math.floor((d.Day - 1) / 31 * monthDiv);
+					if (frac != i || +d.Month != m + 1) continue;
+
+					n++;
+					addChart11TooltipInfo(m, i, d);
+				}
+				data.push({
+					'x': monthNames[m],
+					'y': n,
+				});
+			}
+
+			series.push({
+				name: i,
+				data: data
+			});
+		}
+		return series;
+	}
+
+	function addChart11TooltipInfo(month, div, data) {
+
+		var text = '<li>' + data.Day + '-' + data.Month + '-' + data.Year + ': ' +
+			data.Name + ', aged ' + data.Age + ', region: ' + data.Place +
+			', perpetrator: ' + data.Perpetrator + '</li>';
+
+		var obj = chart11tooltips.find(x => x.month == month && x.div == div);
+		if (obj === undefined) {
+			obj = {
+				month: month,
+				div: div,
+				text: text,
+			};
+			chart11tooltips.push(obj);
+		}
+		else obj.text += text;
 	}
 
 	// show/hide while scrolling
