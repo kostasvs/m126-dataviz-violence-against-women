@@ -287,19 +287,18 @@ $(document).ready(function () {
 	// Chart 4
 	var chart4;
 	var chart4data;
+	var f4type = 0;
 	$.get("assets/us-incident-locations.csv", function (data) {
 
 		chart4data = $.csv.toObjects(data, { separator: ';' });
-		var locationCounts = chart4data.filter(x => x.offense == 0).map(x => [x.name, +x.count, x.code]);
-		locationCounts.sort((a, b) => b[1] - a[1]);
-		var codesSorted = locationCounts.map(x => x[2]);
-		var locationsSorted = locationCounts.map(x => x[0]);
-		chart4data.sort((a, b) => codesSorted.indexOf(a.code) - codesSorted.indexOf(b.code));
 
 		var options = {
 			chart: {
 				type: 'bar',
-				height: 1200
+				height: 1500
+			},
+			legend: {
+				showForSingleSeries: false,
 			},
 			plotOptions: {
 				bar: {
@@ -308,7 +307,7 @@ $(document).ready(function () {
 			},
 			series: seriesChart4(),
 			xaxis: {
-				categories: locationsSorted,
+				categories: categoriesChart4(),
 				labels: {
 					rotateAlways: true,
 					minHeight: 80,
@@ -329,20 +328,47 @@ $(document).ready(function () {
 
 		chart4 = new ApexCharts(document.querySelector("#chart-location1"), options);
 		chart4.render();
+
+		$('#filters-location-us').fadeIn().find('.btn-check').each(function () {
+			$(this).click(clickF4Option);
+		});
 	});
+
+	function clickF4Option() {
+
+		var optName = $(this).attr('name');
+		var optVal = $(this).val();
+
+		if (optName == 'f4type') {
+			f4type = optVal;
+		}
+
+		chart4.updateOptions({
+			series: seriesChart4(),
+			xaxis: {
+				categories: categoriesChart4(),
+				min: 0,
+			},
+		});
+	}
 
 	function seriesChart4() {
 
-		var offenses = [1, 2, 3];
-		var offenseName = ['', 'Sex offenses', 'Assault', 'Homicide'];
-		var series = [];
-		offenses.forEach(function (o) {
-			series.push({
-				name: offenseName[o],
-				data: chart4data.filter(x => x.offense == o).map(x => +x.count > 0 ? Math.log(+x.count) : -1000)
-			});
-		});
-		return series;
+		var data = chart4data.filter(x => x.offense == f4type && +x.count > 0);
+		data.sort((a, b) => +b.count - (+a.count));
+
+		return [{
+			name: 'Incidents',
+			data: data.map(x => Math.log(+x.count))
+		}];
+	}
+
+	function categoriesChart4() {
+
+		var data = chart4data.filter(x => x.offense == f4type && +x.count > 0);
+		data.sort((a, b) => +b.count - (+a.count));
+
+		return data.map(x => x.name);
 	}
 
 	// Chart 5
@@ -411,6 +437,7 @@ $(document).ready(function () {
 
 		chart6 = new ApexCharts(document.querySelector("#chart-relationship-us"), options);
 		chart6.render();
+
 		$('#filters-relationship-us').fadeIn().find('.btn-check').each(function () {
 			$(this).click(clickF6Option);
 		});
