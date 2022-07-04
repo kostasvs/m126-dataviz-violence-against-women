@@ -401,6 +401,10 @@ $(document).ready(function () {
 			series: seriesChart6(),
 			xaxis: {
 				categories: chart6data.filter(x => x.offense == 1).map(x => x.relationship),
+				labels: {
+					rotateAlways: true,
+					minHeight: 64,
+				}
 			},
 		}
 
@@ -436,6 +440,105 @@ $(document).ready(function () {
 				});
 			}
 		});
+		return series;
+	}
+
+	// Chart 7
+	var chart7;
+	var chart7data;
+	var f7type = 0, f7gender = 'M';
+	$.get("assets/us-ages.csv", function (data) {
+
+		chart7data = $.csv.toObjects(data);
+
+		var options = {
+			series: seriesChart7(),
+			chart: {
+				type: 'heatmap',
+				height: 420,
+			},
+			colors: ["#e10000"],
+			stroke: {
+				width: 1,
+				colors: ["darkgray"],
+			},
+			xaxis: {
+				title: {
+					text: "Perpetrator age (years)"
+				},
+				labels: {
+					rotateAlways: true,
+					maxHeight: 70,
+				}
+			},
+			yaxis: {
+				title: {
+					text: "Victim age (years)"
+				},
+			},
+		}
+
+		chart7 = new ApexCharts(document.querySelector("#chart-ages-us"), options);
+		chart7.render();
+
+		$('#filters-ages-us').fadeIn().find('.btn-check').each(function () {
+			$(this).click(clickF7Option);
+		});
+	});
+
+	function clickF7Option() {
+
+		var optName = $(this).attr('name');
+		var optVal = $(this).val();
+
+		switch (optName) {
+			case 'f7type':
+				f7type = optVal;
+				break;
+
+			case 'f7gender':
+				f7gender = optVal;
+				break;
+
+			default:
+				return;
+		}
+
+		chart7.updateSeries(seriesChart7());
+	}
+
+	function seriesChart7() {
+
+		var filtered = chart7data.filter(x => x.offense == f7type && x.offender_gender == f7gender);
+		var series = [];
+		var ages = [...Array(20).keys()];
+		for (const offender_agegroup of ages) {
+
+			var data = filtered.filter(x => x.offender_agegroup == offender_agegroup).map(function (x) {
+				return {
+					'x': +x.victim_agegroup,
+					'y': +x.count,
+				}
+			});
+			for (let i = 0; i < ages.length; i++) {
+				if (data.findIndex(a => a.x == i) == -1) {
+					data.push({
+						'x': i,
+						'y': 0,
+					});
+				}
+			}
+
+			for (const elem of data) {
+				elem.x = (elem.x * 5) + " - " + ((elem.x + 1) * 5);
+			}
+
+			series.push({
+				name: (offender_agegroup * 5) + " - " + ((offender_agegroup + 1) * 5),
+				data: data
+			});
+		}
+		console.log(series)
 		return series;
 	}
 

@@ -175,7 +175,7 @@
 						</div>
 
 						<p class="mt-3 mb-1">Region</p>
-						<select class="form-select" name="f3region" aria-label="Zoomed region">
+						<select class="form-select" name="f3region" aria-label="Zoomed region" style="width: auto">
 							<option value="world" selected>World</option>
 							<option value="002">Africa</option>
 							<option value="150">Europe</option>
@@ -357,6 +357,68 @@
 			</div>
 		</div>
 
+		<div class="row py-5 px-3">
+			<div class="col-12 col-lg-5 py-2">
+				<div class="scrollytellingBox">
+					<h1>USA: How are crimes distributed across age and race?</h1>
+					<p class="lead py-2">
+						While assaults and homicides peak in the age range of 20 - 40 years,
+						sex offenses are highest in the age range of 10 - 25 years.
+					</p>
+					<p class="lead pb-2">
+						Assaults and homicides against Black or African American women seem
+						to be skewed towards a younger age range than other races.
+					</p>
+					<p class="lead pb-2">
+						Homicides show a wider age spread than other crimes.
+					</p>
+				</div>
+
+			</div>
+
+			<div class="col-12 col-lg-7">
+				<div class="scrollytellingBox right delayed">
+					<h6 class="text-center pt-3">
+						Reported incidents in the USA in 2020 involving violence against
+						women, by category, perpetrator gender, and victim/perpetrator age
+					</h6>
+					<div id="chart-ages-us"></div>
+
+					<div id="filters-ages-us" style="display: none">
+						<p class="mb-1">Offense category</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - offense category">
+							<input type="radio" class="btn-check" id="f7type0" name="f7type" value="0"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f7type0">All</label>
+
+							<input type="radio" class="btn-check" id="f7type1" name="f7type" value="1"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f7type1">Sex offenses</label>
+
+							<input type="radio" class="btn-check" id="f7type2" name="f7type" value="2"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f7type2">Assault</label>
+
+							<input type="radio" class="btn-check" id="f7type3" name="f7type" value="3"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f7type3">Homicide</label>
+						</div>
+
+						<p class="mt-3 mb-1">Perpetrator gender</p>
+						<div class="btn-group" role="group" aria-label="Chart filter options - perpetrator gender">
+							<input type="radio" class="btn-check" id="f7gender1" name="f7gender" value="M"
+								autocomplete="off" checked />
+							<label class="btn btn-outline-primary" for="f7gender1">Male</label>
+
+							<input type="radio" class="btn-check" id="f7gender2" name="f7gender" value="F"
+								autocomplete="off" />
+							<label class="btn btn-outline-primary" for="f7gender2">Female</label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end of Page content -->
 	</div>
 
 	<!-- Bootstrap core JS-->
