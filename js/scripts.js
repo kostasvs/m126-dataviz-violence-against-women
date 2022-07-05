@@ -15,7 +15,32 @@ $(document).ready(function () {
 	}
 
 	if ($('body').hasClass('credits')) return;
-	
+
+	// typewriter
+	var typeWords = [
+		'physical violence',
+		'intimate partner violence',
+		'sexual violence',
+		'psychological abuse',
+		"a violation of human rights",
+	];
+	var typeIndex = 0;
+	var app = document.getElementById('typewriter');
+	var typewriter = new Typewriter(app, {
+		loop: false,
+		delay: 50,
+	});
+	typewriter.typeString('Violence against women is ').callFunction(typeNextString, this).start();
+
+	function typeNextString() {
+
+		var text = typeWords[typeIndex];
+		typeIndex++;
+		if (typeIndex >= typeWords.length) typeIndex = 0;
+		typewriter.typeString(text).pauseFor(2500).deleteChars(text.length).callFunction(typeNextString, this);
+	}
+
+	// default chart options
 	window.Apex = {
 		chart: {
 			foreColor: '#ccc',
