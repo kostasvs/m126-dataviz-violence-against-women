@@ -1,5 +1,21 @@
 $(document).ready(function () {
 
+	// show/hide while scrolling
+	const boxes = document.querySelectorAll('.scrollytellingTrigger');
+	window.addEventListener('scroll', checkBoxes);
+	checkBoxes();
+	function checkBoxes() {
+		const triggerBottom = window.innerHeight * 0.8;
+		boxes.forEach(box => {
+			const boxTop = box.getBoundingClientRect().top;
+			if (boxTop < triggerBottom) {
+				$(box).find('.scrollytellingBox').addClass('show');
+			}
+		})
+	}
+
+	if ($('body').hasClass('credits')) return;
+	
 	window.Apex = {
 		chart: {
 			foreColor: '#ccc',
@@ -896,19 +912,5 @@ $(document).ready(function () {
 			chart11tooltips.push(obj);
 		}
 		else obj.text += text;
-	}
-
-	// show/hide while scrolling
-	const boxes = document.querySelectorAll('.scrollytellingTrigger');
-	window.addEventListener('scroll', checkBoxes);
-	checkBoxes();
-	function checkBoxes() {
-		const triggerBottom = window.innerHeight * 0.8;
-		boxes.forEach(box => {
-			const boxTop = box.getBoundingClientRect().top;
-			if (boxTop < triggerBottom) {
-				$(box).find('.scrollytellingBox').addClass('show');
-			}
-		})
 	}
 });
