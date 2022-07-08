@@ -17,6 +17,8 @@
 
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="css/styles.css" rel="stylesheet" />
+	<!-- Lite YouTube -->
+	<link rel="stylesheet" href="lite-yt/lite-yt-embed.css" />
 </head>
 
 <body class="bg-dark text-light credits">
@@ -35,10 +37,10 @@
 						<a class="nav-link text-white" href="index.html">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-white" href="video.html">Explainer video</a>
+						<a class="nav-link text-white active" aria-current="page" href="#">Explainer video</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-white active" aria-current="page" href="#">Credits</a>
+						<a class="nav-link text-white" href="credits.html">Credits</a>
 					</li>
 				</ul>
 			</div>
@@ -49,51 +51,14 @@
 	<div class="container-xxl">
 		<div class="row scrollytellingTrigger py-5 px-3">
 			<div class="col">
-				<div class="scrollytellingBox">
-					<h1 class="py-2">Violence against women</h1>
-					<h3>A data vizualization project by</h3>
-					<ul>
-						<li class="py-1">
-							<a class="text-info" href="subsites/SiteSofia/arxiki2.htm">Sofia Gavrela</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="subsites/SiteSimos/index.html">Gerasimos Katsagannis</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="subsites/SiteArchontoula/index.html">Archontoula Bada</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="subsites/SiteKostas/index.html">Kostas Ventouras</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-
-		<div class="row scrollytellingTrigger py-5 px-3">
-			<div class="col">
-				<div class="scrollytellingBox">
-					<h3>Sources - Datasets</h3>
-					<ul>
-						<li class="py-1">
-							<a class="text-info" href="https://dataunodc.un.org/content/homicide-country-data">
-								Homicide Country Data (dataUNODC)
-							</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="https://dataunodc.un.org/data/homicide/Homicide%20by%20sex%20and%20age%20group">
-								Homicide by sex and age group (dataUNODC)
-							</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="https://crime-data-explorer.fr.cloud.gov/pages/home">FBI Crime Data</a>
-						</li>
-						<li class="py-1">
-							<a class="text-info" href="https://femicide.gr/poiotika-dedomena/">
-								femicide.gr
-							</a>
-						</li>
-					</ul>
+				<div class="scrollytellingBox text-center">
+					<h2 class="py-2">Explainer video</h2>
+					<p>The following video (in greek voiceover) gives a brief tour of this website and its content.</p>
+					
+					<div style="max-width: 720px; margin: 0 auto;">
+						<lite-youtube videoid="724h-Nh_fOE" playlabel="Explainer video"
+						style="background-image: url('https://i.ytimg.com/vi/724h-Nh_fOE/maxresdefault.jpg');"></lite-youtube>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -105,6 +70,7 @@
 	<!-- jQuery -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
 	<!-- other JS-->
+	<script src="lite-yt/lite-yt-embed.js"></script>
 	<script src="js/scripts.js"></script>
 </body>
 
